@@ -735,7 +735,7 @@ public class GUIOrg extends javax.swing.JFrame {
             organization.setCampaign(campaign[i]);
 //            String campaignDetailString = (countCampaign + 1) + ")" + " " + campaign[i].getCampaignName() + "   |   " + campaign[i].getCampaignStartDate() + "   |   " +
 //                    campaign[i].getCampaignVenue() + "   |   " + organization.getOrgnizationName() + "<BR>";
-//            campaignDetail += campaignDetailString
+//            campaignDetail += campaignDetailString;
             try {
                 myConn = DriverManager.getConnection("jdbc:mysql://localhost:3306/phase3", "root", "");
                 myStat = myConn.createStatement();
