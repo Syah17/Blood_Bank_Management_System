@@ -11,9 +11,7 @@ package phase3;
  */
 public class Campaign {
 
-    private String campaignName;
-    private String campaignStartDate;
-    private String campaignVenue;
+    private String campaignName, campaignStartDate, campaignVenue;
     private double campaignTotalDonatedBlood;
     private Donor donor;
     
@@ -22,8 +20,7 @@ public class Campaign {
         this.campaignName = campaignName;
         this.campaignStartDate = campaignStartDate;
         this.campaignVenue = campaignVenue;
-        this.donor = donor;
-       
+       this.donor = donor;
     }
     public Campaign(){
         this.campaignName = null;

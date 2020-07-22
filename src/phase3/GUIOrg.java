@@ -5,12 +5,12 @@
  */
 package phase3;
 
-import java.awt.Color;
-import java.awt.event.ItemListener;
+
 import java.sql.Connection;
 import java.sql.DriverManager;
-import java.sql.PreparedStatement;
+
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.sql.Statement;
 
 
@@ -685,8 +685,7 @@ public class GUIOrg extends javax.swing.JFrame {
                 myStat.execute("SELECT * FROM `organization`");
                 myStat.execute("INSERT INTO `organization` (`orgName`, `orgAddress`, `orgPhoneNo`, `orgEmail`) VALUEs('" + txtOrgName.getText() + "','" +
                         txtOrgAddress.getText() + "','" + txtOrgPhoneNo.getText() + "','" + txtOrgEmail.getText() + "');");
-            } catch (Exception e) {
-                e.printStackTrace();
+            } catch (SQLException e) {
             }
 
 
@@ -702,8 +701,7 @@ public class GUIOrg extends javax.swing.JFrame {
                 myStat.execute("SELECT * FROM `organization`");
                 myStat.execute("UPDATE organization SET orgName = '" + txtOrgName.getText() + "' , orgAddress = '" + txtOrgAddress.getText() + "' , orgPhoneNo = '" + txtOrgPhoneNo.getText() + "' , orgEmail = '" + txtOrgEmail.getText() + "' WHERE id = '1'");
                 //myStat.execute("UPDATE `organization` SET `orgName` = "+txtOrgName.getText()+", `orgAddress` = "+ txtOrgAddress.getText()+", `orgPhoneNo` = "+ txtOrgPhoneNo.getText()+", `orgEmail` = "+ txtOrgEmail.getText()+" WHERE id = '1';");
-            } catch (Exception e) {
-                e.printStackTrace();
+            } catch (SQLException e) {
             }
             organization.updateDetails(txtOrgName.getText(), txtOrgAddress.getText(), txtOrgPhoneNo.getText(), txtOrgEmail.getText());
 
