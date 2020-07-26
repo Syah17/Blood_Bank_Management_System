@@ -132,6 +132,7 @@ public class GUIOrg extends javax.swing.JFrame {
         lblCampaignVenue = new javax.swing.JLabel();
         txtCampainVenue = new javax.swing.JTextField();
         btnCampaignSubmitButton = new javax.swing.JButton();
+        checkBoxUOrgUpdate1 = new javax.swing.JCheckBox();
         pnlDonorOutput = new javax.swing.JPanel();
         lblDonorHeaderOutPut = new javax.swing.JLabel();
         lblDonorResult = new javax.swing.JLabel();
@@ -545,6 +546,13 @@ public class GUIOrg extends javax.swing.JFrame {
             }
         });
 
+        checkBoxUOrgUpdate1.setText("Update?");
+        checkBoxUOrgUpdate1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                checkBoxUOrgUpdate1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout pnlCampaignInputLayout = new javax.swing.GroupLayout(pnlCampaignInput);
         pnlCampaignInput.setLayout(pnlCampaignInputLayout);
         pnlCampaignInputLayout.setHorizontalGroup(
@@ -553,10 +561,11 @@ public class GUIOrg extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(pnlCampaignInputLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(pnlCampaignInputLayout.createSequentialGroup()
-                        .addGroup(pnlCampaignInputLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(pnlCampaignInputLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(lblCampaignName)
                             .addComponent(lblCampaignStartDate)
-                            .addComponent(lblCampaignVenue))
+                            .addComponent(lblCampaignVenue)
+                            .addComponent(checkBoxUOrgUpdate1))
                         .addGroup(pnlCampaignInputLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(pnlCampaignInputLayout.createSequentialGroup()
                                 .addGap(56, 56, 56)
@@ -587,7 +596,9 @@ public class GUIOrg extends javax.swing.JFrame {
                     .addComponent(txtCampainVenue, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblCampaignVenue))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 32, Short.MAX_VALUE)
-                .addComponent(btnCampaignSubmitButton)
+                .addGroup(pnlCampaignInputLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnCampaignSubmitButton)
+                    .addComponent(checkBoxUOrgUpdate1))
                 .addContainerGap())
         );
 
@@ -896,6 +907,21 @@ public class GUIOrg extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtCampaignNameActionPerformed
 
+    private void checkBoxUOrgUpdate1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_checkBoxUOrgUpdate1ActionPerformed
+          if (checkBoxUOrgUpdate1.isSelected()) {
+            txtOrgName.setEditable(true);
+            txtOrgAddress.setEditable(true);
+            txtOrgPhoneNo.setEditable(true);
+            txtOrgEmail.setEditable(true);
+            //organization.updateDetails(txtOrgName.getText(), txtOrgAddress.getText(), txtOrgPhoneNo.getText(), txtOrgEmail.getText());
+        } else {
+            txtOrgName.setEditable(false);
+            txtOrgAddress.setEditable(false);
+            txtOrgPhoneNo.setEditable(false);
+            txtOrgEmail.setEditable(false);
+        }
+    }//GEN-LAST:event_checkBoxUOrgUpdate1ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -957,6 +983,7 @@ public class GUIOrg extends javax.swing.JFrame {
     private javax.swing.JButton btnDonorUmpStudSubmitButton;
     private javax.swing.JButton btnOrgSubmitButton;
     private javax.swing.JCheckBox checkBoxUOrgUpdate;
+    private javax.swing.JCheckBox checkBoxUOrgUpdate1;
     private javax.swing.JComboBox<String> cmbDonorGuestGender;
     private javax.swing.JComboBox<String> cmbDonorUmpStudGender;
     private javax.swing.JLabel jLabel1;
