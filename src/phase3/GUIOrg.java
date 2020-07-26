@@ -5,12 +5,12 @@
  */
 package phase3;
 
-import java.awt.Color;
-import java.awt.event.ItemListener;
+
 import java.sql.Connection;
 import java.sql.DriverManager;
-import java.sql.PreparedStatement;
+
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.sql.Statement;
 
 
@@ -86,7 +86,9 @@ public class GUIOrg extends javax.swing.JFrame {
         lblOrgHeaderOutPut = new javax.swing.JLabel();
         pnlCampaignOutput = new javax.swing.JPanel();
         lblCampaignHeaderOutPut = new javax.swing.JLabel();
-        lblCampaignArrayDetails = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
         pnlDonorInput = new javax.swing.JPanel();
         lblDonorHeader = new javax.swing.JLabel();
         radDonorUmpStud = new javax.swing.JRadioButton();
@@ -165,62 +167,62 @@ public class GUIOrg extends javax.swing.JFrame {
         javax.swing.GroupLayout pblOrgInputLayout = new javax.swing.GroupLayout(pblOrgInput);
         pblOrgInput.setLayout(pblOrgInputLayout);
         pblOrgInputLayout.setHorizontalGroup(
-                pblOrgInputLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(pblOrgInputLayout.createSequentialGroup()
+            pblOrgInputLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pblOrgInputLayout.createSequentialGroup()
+                .addGroup(pblOrgInputLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(pblOrgInputLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addGroup(pblOrgInputLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(pblOrgInputLayout.createSequentialGroup()
                                 .addGroup(pblOrgInputLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addGroup(pblOrgInputLayout.createSequentialGroup()
-                                                .addContainerGap()
-                                                .addGroup(pblOrgInputLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                        .addGroup(pblOrgInputLayout.createSequentialGroup()
-                                                                .addGroup(pblOrgInputLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                                        .addComponent(lblOrgName)
-                                                                        .addComponent(lblOrgAddress)
-                                                                        .addComponent(lblOrgPhoneNo)
-                                                                        .addComponent(lblOrgEmail)
-                                                                        .addComponent(checkBoxUOrgUpdate))
-                                                                .addGroup(pblOrgInputLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                                        .addGroup(pblOrgInputLayout.createSequentialGroup()
-                                                                                .addGap(56, 56, 56)
-                                                                                .addGroup(pblOrgInputLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                                                        .addComponent(txtOrgName, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                                                        .addComponent(txtOrgEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                                                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pblOrgInputLayout.createSequentialGroup()
-                                                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                                                .addGroup(pblOrgInputLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                                                        .addComponent(txtOrgAddress, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                                                        .addComponent(txtOrgPhoneNo, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                                                        .addComponent(lblOrgHeader))
-                                                .addGap(0, 0, Short.MAX_VALUE))
-                                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pblOrgInputLayout.createSequentialGroup()
-                                                .addGap(0, 0, Short.MAX_VALUE)
-                                                .addComponent(btnOrgSubmitButton)))
-                                .addContainerGap())
+                                    .addComponent(lblOrgName)
+                                    .addComponent(lblOrgAddress)
+                                    .addComponent(lblOrgPhoneNo)
+                                    .addComponent(lblOrgEmail)
+                                    .addComponent(checkBoxUOrgUpdate))
+                                .addGroup(pblOrgInputLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(pblOrgInputLayout.createSequentialGroup()
+                                        .addGap(56, 56, 56)
+                                        .addGroup(pblOrgInputLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(txtOrgName, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(txtOrgEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pblOrgInputLayout.createSequentialGroup()
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addGroup(pblOrgInputLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(txtOrgAddress, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(txtOrgPhoneNo, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                            .addComponent(lblOrgHeader))
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pblOrgInputLayout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(btnOrgSubmitButton)))
+                .addContainerGap())
         );
         pblOrgInputLayout.setVerticalGroup(
-                pblOrgInputLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(pblOrgInputLayout.createSequentialGroup()
-                                .addComponent(lblOrgHeader)
-                                .addGap(40, 40, 40)
-                                .addGroup(pblOrgInputLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                        .addComponent(lblOrgName)
-                                        .addComponent(txtOrgName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(18, 18, 18)
-                                .addGroup(pblOrgInputLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                        .addComponent(txtOrgAddress, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(lblOrgAddress))
-                                .addGap(22, 22, 22)
-                                .addGroup(pblOrgInputLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                        .addComponent(txtOrgPhoneNo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(lblOrgPhoneNo))
-                                .addGap(18, 18, 18)
-                                .addGroup(pblOrgInputLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                        .addComponent(txtOrgEmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(lblOrgEmail))
-                                .addGap(18, 18, 18)
-                                .addGroup(pblOrgInputLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                        .addComponent(btnOrgSubmitButton)
-                                        .addComponent(checkBoxUOrgUpdate))
-                                .addContainerGap(22, Short.MAX_VALUE))
+            pblOrgInputLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pblOrgInputLayout.createSequentialGroup()
+                .addComponent(lblOrgHeader)
+                .addGap(40, 40, 40)
+                .addGroup(pblOrgInputLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblOrgName)
+                    .addComponent(txtOrgName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(pblOrgInputLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtOrgAddress, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblOrgAddress))
+                .addGap(22, 22, 22)
+                .addGroup(pblOrgInputLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtOrgPhoneNo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblOrgPhoneNo))
+                .addGap(18, 18, 18)
+                .addGroup(pblOrgInputLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtOrgEmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblOrgEmail))
+                .addGap(18, 18, 18)
+                .addGroup(pblOrgInputLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnOrgSubmitButton)
+                    .addComponent(checkBoxUOrgUpdate))
+                .addContainerGap(22, Short.MAX_VALUE))
         );
 
         lblOrgNameOut.setText("Org Name : ");
@@ -237,53 +239,64 @@ public class GUIOrg extends javax.swing.JFrame {
         javax.swing.GroupLayout pnlOrgOutputLayout = new javax.swing.GroupLayout(pnlOrgOutput);
         pnlOrgOutput.setLayout(pnlOrgOutputLayout);
         pnlOrgOutputLayout.setHorizontalGroup(
-                pnlOrgOutputLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(pnlOrgOutputLayout.createSequentialGroup()
-                                .addGroup(pnlOrgOutputLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(lblOrgNameOut)
-                                        .addComponent(lblOrgAddressOut)
-                                        .addComponent(lblOrgPhoneNoOut)
-                                        .addComponent(lblOrgEmailOut)
-                                        .addComponent(lblOrgHeaderOutPut))
-                                .addContainerGap(21, Short.MAX_VALUE))
+            pnlOrgOutputLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlOrgOutputLayout.createSequentialGroup()
+                .addGroup(pnlOrgOutputLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lblOrgNameOut)
+                    .addComponent(lblOrgAddressOut)
+                    .addComponent(lblOrgPhoneNoOut)
+                    .addComponent(lblOrgEmailOut)
+                    .addComponent(lblOrgHeaderOutPut))
+                .addContainerGap(21, Short.MAX_VALUE))
         );
         pnlOrgOutputLayout.setVerticalGroup(
-                pnlOrgOutputLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(pnlOrgOutputLayout.createSequentialGroup()
-                                .addComponent(lblOrgHeaderOutPut)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 43, Short.MAX_VALUE)
-                                .addComponent(lblOrgNameOut)
-                                .addGap(21, 21, 21)
-                                .addComponent(lblOrgAddressOut)
-                                .addGap(24, 24, 24)
-                                .addComponent(lblOrgPhoneNoOut)
-                                .addGap(18, 18, 18)
-                                .addComponent(lblOrgEmailOut)
-                                .addGap(43, 43, 43))
+            pnlOrgOutputLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlOrgOutputLayout.createSequentialGroup()
+                .addComponent(lblOrgHeaderOutPut)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 43, Short.MAX_VALUE)
+                .addComponent(lblOrgNameOut)
+                .addGap(21, 21, 21)
+                .addComponent(lblOrgAddressOut)
+                .addGap(24, 24, 24)
+                .addComponent(lblOrgPhoneNoOut)
+                .addGap(18, 18, 18)
+                .addComponent(lblOrgEmailOut)
+                .addGap(43, 43, 43))
         );
 
         lblCampaignHeaderOutPut.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         lblCampaignHeaderOutPut.setText("Output");
 
-        lblCampaignArrayDetails.setText("CampaignArrayDetails");
+        jLabel1.setText("Campaign name:");
+
+        jLabel2.setText("Campaign Start Date:");
+
+        jLabel3.setText("Campaign Venue:");
 
         javax.swing.GroupLayout pnlCampaignOutputLayout = new javax.swing.GroupLayout(pnlCampaignOutput);
         pnlCampaignOutput.setLayout(pnlCampaignOutputLayout);
         pnlCampaignOutputLayout.setHorizontalGroup(
-                pnlCampaignOutputLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(pnlCampaignOutputLayout.createSequentialGroup()
-                                .addGroup(pnlCampaignOutputLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(lblCampaignHeaderOutPut)
-                                        .addComponent(lblCampaignArrayDetails, javax.swing.GroupLayout.PREFERRED_SIZE, 340, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(0, 28, Short.MAX_VALUE))
+            pnlCampaignOutputLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlCampaignOutputLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(pnlCampaignOutputLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel1)
+                    .addComponent(jLabel2)
+                    .addComponent(jLabel3)
+                    .addComponent(lblCampaignHeaderOutPut))
+                .addContainerGap(232, Short.MAX_VALUE))
         );
         pnlCampaignOutputLayout.setVerticalGroup(
-                pnlCampaignOutputLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(pnlCampaignOutputLayout.createSequentialGroup()
-                                .addComponent(lblCampaignHeaderOutPut)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(lblCampaignArrayDetails)
-                                .addContainerGap(154, Short.MAX_VALUE))
+            pnlCampaignOutputLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlCampaignOutputLayout.createSequentialGroup()
+                .addComponent(lblCampaignHeaderOutPut)
+                .addGap(44, 44, 44)
+                .addComponent(jLabel1)
+                .addGap(18, 18, 18)
+                .addComponent(jLabel2)
+                .addGap(34, 34, 34)
+                .addComponent(jLabel3)
+                .addContainerGap(39, Short.MAX_VALUE))
         );
 
         lblDonorHeader.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
@@ -309,7 +322,7 @@ public class GUIOrg extends javax.swing.JFrame {
 
         txtDonorUmpStudGender.setText("Donor Gender :");
 
-        cmbDonorUmpStudGender.setModel(new javax.swing.DefaultComboBoxModel<>(new String[]{"Male", "Female"}));
+        cmbDonorUmpStudGender.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Male", "Female" }));
 
         lblDonorUmpStudName.setText("Donor Name :");
 
@@ -331,69 +344,69 @@ public class GUIOrg extends javax.swing.JFrame {
         javax.swing.GroupLayout pnlDonorUmpStudLayout = new javax.swing.GroupLayout(pnlDonorUmpStud);
         pnlDonorUmpStud.setLayout(pnlDonorUmpStudLayout);
         pnlDonorUmpStudLayout.setHorizontalGroup(
-                pnlDonorUmpStudLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlDonorUmpStudLayout.createSequentialGroup()
-                                .addGap(0, 0, Short.MAX_VALUE)
-                                .addComponent(btnDonorUmpStudSubmitButton))
-                        .addGroup(pnlDonorUmpStudLayout.createSequentialGroup()
-                                .addGroup(pnlDonorUmpStudLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(lblDonorStudentID)
-                                        .addComponent(txtDonorUmpStudGender)
-                                        .addComponent(lblDonorUmpStudAge)
-                                        .addComponent(lblDonorUmpStudTotalBlood)
-                                        .addComponent(lblDonorUmpStudCampaignNo)
-                                        .addComponent(lblDonorUmpStudName)
-                                        .addComponent(lblDonorUmpStudDonateAmount))
-                                .addGap(105, 105, 105)
-                                .addGroup(pnlDonorUmpStudLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(txtDonorUmpStudName, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(cmbDonorUmpStudGender, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(txtDonorUmpStudID, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(txtDoorUmpStudAge, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(txtDonorUmpStudTotalBlood, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(txtDonorUmpStudCampaignNo, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(txtDonorUmpStudDonateAmount, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            pnlDonorUmpStudLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlDonorUmpStudLayout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(btnDonorUmpStudSubmitButton))
+            .addGroup(pnlDonorUmpStudLayout.createSequentialGroup()
+                .addGroup(pnlDonorUmpStudLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lblDonorStudentID)
+                    .addComponent(txtDonorUmpStudGender)
+                    .addComponent(lblDonorUmpStudAge)
+                    .addComponent(lblDonorUmpStudTotalBlood)
+                    .addComponent(lblDonorUmpStudCampaignNo)
+                    .addComponent(lblDonorUmpStudName)
+                    .addComponent(lblDonorUmpStudDonateAmount))
+                .addGap(105, 105, 105)
+                .addGroup(pnlDonorUmpStudLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(txtDonorUmpStudName, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cmbDonorUmpStudGender, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtDonorUmpStudID, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtDoorUmpStudAge, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtDonorUmpStudTotalBlood, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtDonorUmpStudCampaignNo, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtDonorUmpStudDonateAmount, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         pnlDonorUmpStudLayout.setVerticalGroup(
-                pnlDonorUmpStudLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(pnlDonorUmpStudLayout.createSequentialGroup()
-                                .addContainerGap()
-                                .addGroup(pnlDonorUmpStudLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                        .addComponent(lblDonorUmpStudName)
-                                        .addComponent(txtDonorUmpStudName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(16, 16, 16)
-                                .addGroup(pnlDonorUmpStudLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                        .addComponent(lblDonorStudentID)
-                                        .addComponent(txtDonorUmpStudID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(18, 18, 18)
-                                .addGroup(pnlDonorUmpStudLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                        .addComponent(cmbDonorUmpStudGender, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(txtDonorUmpStudGender))
-                                .addGap(18, 18, 18)
-                                .addGroup(pnlDonorUmpStudLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                        .addComponent(lblDonorUmpStudAge)
-                                        .addComponent(txtDoorUmpStudAge, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(18, 18, 18)
-                                .addGroup(pnlDonorUmpStudLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                        .addComponent(txtDonorUmpStudTotalBlood, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(lblDonorUmpStudTotalBlood))
-                                .addGap(18, 18, 18)
-                                .addGroup(pnlDonorUmpStudLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                        .addComponent(txtDonorUmpStudCampaignNo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(lblDonorUmpStudCampaignNo))
-                                .addGap(18, 18, 18)
-                                .addGroup(pnlDonorUmpStudLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                        .addComponent(lblDonorUmpStudDonateAmount)
-                                        .addComponent(txtDonorUmpStudDonateAmount, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(18, 18, 18)
-                                .addComponent(btnDonorUmpStudSubmitButton)
-                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            pnlDonorUmpStudLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlDonorUmpStudLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(pnlDonorUmpStudLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblDonorUmpStudName)
+                    .addComponent(txtDonorUmpStudName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(16, 16, 16)
+                .addGroup(pnlDonorUmpStudLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblDonorStudentID)
+                    .addComponent(txtDonorUmpStudID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(pnlDonorUmpStudLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(cmbDonorUmpStudGender, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtDonorUmpStudGender))
+                .addGap(18, 18, 18)
+                .addGroup(pnlDonorUmpStudLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblDonorUmpStudAge)
+                    .addComponent(txtDoorUmpStudAge, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(pnlDonorUmpStudLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtDonorUmpStudTotalBlood, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblDonorUmpStudTotalBlood))
+                .addGap(18, 18, 18)
+                .addGroup(pnlDonorUmpStudLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtDonorUmpStudCampaignNo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblDonorUmpStudCampaignNo))
+                .addGap(18, 18, 18)
+                .addGroup(pnlDonorUmpStudLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblDonorUmpStudDonateAmount)
+                    .addComponent(txtDonorUmpStudDonateAmount, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addComponent(btnDonorUmpStudSubmitButton)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         txtDonorGuestGender.setText("Donor Gender :");
 
-        cmbDonorGuestGender.setModel(new javax.swing.DefaultComboBoxModel<>(new String[]{"Male", "Female"}));
+        cmbDonorGuestGender.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Male", "Female" }));
 
         lblDonorGuestName.setText("Donor Name :");
 
@@ -415,105 +428,111 @@ public class GUIOrg extends javax.swing.JFrame {
         javax.swing.GroupLayout pnlDonorGuestLayout = new javax.swing.GroupLayout(pnlDonorGuest);
         pnlDonorGuest.setLayout(pnlDonorGuestLayout);
         pnlDonorGuestLayout.setHorizontalGroup(
-                pnlDonorGuestLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(pnlDonorGuestLayout.createSequentialGroup()
-                                .addGroup(pnlDonorGuestLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(txtDonorGuestGender)
-                                        .addComponent(lblDonorGuestAge)
-                                        .addComponent(lblDonorGuestTotalBlood)
-                                        .addComponent(lblDonorGuestCampaignNo)
-                                        .addComponent(lblDonorGuestName)
-                                        .addComponent(lblDonorGuestDonateAmount))
-                                .addGap(105, 105, 105)
-                                .addGroup(pnlDonorGuestLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(txtDonorGuestName, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(txtDonorGuestCampaignNo, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(txtDonorGuestTotalBlood, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(txtDoorGuestAge, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(cmbDonorGuestGender, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(txtDonorGuestDonateAmount, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlDonorGuestLayout.createSequentialGroup()
-                                .addGap(0, 0, Short.MAX_VALUE)
-                                .addComponent(btnDonorGuestSubmitButton))
+            pnlDonorGuestLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlDonorGuestLayout.createSequentialGroup()
+                .addGroup(pnlDonorGuestLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(txtDonorGuestGender)
+                    .addComponent(lblDonorGuestAge)
+                    .addComponent(lblDonorGuestTotalBlood)
+                    .addComponent(lblDonorGuestCampaignNo)
+                    .addComponent(lblDonorGuestName)
+                    .addComponent(lblDonorGuestDonateAmount))
+                .addGap(105, 105, 105)
+                .addGroup(pnlDonorGuestLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(txtDonorGuestName, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtDonorGuestCampaignNo, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtDonorGuestTotalBlood, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtDoorGuestAge, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cmbDonorGuestGender, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtDonorGuestDonateAmount, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlDonorGuestLayout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(btnDonorGuestSubmitButton))
         );
         pnlDonorGuestLayout.setVerticalGroup(
-                pnlDonorGuestLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(pnlDonorGuestLayout.createSequentialGroup()
-                                .addContainerGap()
-                                .addGroup(pnlDonorGuestLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                        .addComponent(lblDonorGuestName)
-                                        .addComponent(txtDonorGuestName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(18, 18, 18)
-                                .addGroup(pnlDonorGuestLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(txtDonorGuestGender)
-                                        .addComponent(cmbDonorGuestGender, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGroup(pnlDonorGuestLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addGroup(pnlDonorGuestLayout.createSequentialGroup()
-                                                .addGap(20, 20, 20)
-                                                .addComponent(lblDonorGuestAge))
-                                        .addGroup(pnlDonorGuestLayout.createSequentialGroup()
-                                                .addGap(18, 18, 18)
-                                                .addComponent(txtDoorGuestAge, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                .addGap(23, 23, 23)
-                                .addGroup(pnlDonorGuestLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                        .addComponent(lblDonorGuestTotalBlood)
-                                        .addComponent(txtDonorGuestTotalBlood, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(25, 25, 25)
-                                .addGroup(pnlDonorGuestLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                        .addComponent(lblDonorGuestCampaignNo)
-                                        .addComponent(txtDonorGuestCampaignNo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(23, 23, 23)
-                                .addGroup(pnlDonorGuestLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                        .addComponent(lblDonorGuestDonateAmount)
-                                        .addComponent(txtDonorGuestDonateAmount, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(btnDonorGuestSubmitButton)
-                                .addContainerGap(20, Short.MAX_VALUE))
+            pnlDonorGuestLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlDonorGuestLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(pnlDonorGuestLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblDonorGuestName)
+                    .addComponent(txtDonorGuestName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(pnlDonorGuestLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(txtDonorGuestGender)
+                    .addComponent(cmbDonorGuestGender, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(pnlDonorGuestLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(pnlDonorGuestLayout.createSequentialGroup()
+                        .addGap(20, 20, 20)
+                        .addComponent(lblDonorGuestAge))
+                    .addGroup(pnlDonorGuestLayout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addComponent(txtDoorGuestAge, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(23, 23, 23)
+                .addGroup(pnlDonorGuestLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblDonorGuestTotalBlood)
+                    .addComponent(txtDonorGuestTotalBlood, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(25, 25, 25)
+                .addGroup(pnlDonorGuestLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblDonorGuestCampaignNo)
+                    .addComponent(txtDonorGuestCampaignNo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(23, 23, 23)
+                .addGroup(pnlDonorGuestLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblDonorGuestDonateAmount)
+                    .addComponent(txtDonorGuestDonateAmount, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(btnDonorGuestSubmitButton)
+                .addContainerGap(20, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout pnlDonorInputLayout = new javax.swing.GroupLayout(pnlDonorInput);
         pnlDonorInput.setLayout(pnlDonorInputLayout);
         pnlDonorInputLayout.setHorizontalGroup(
-                pnlDonorInputLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(pnlDonorInputLayout.createSequentialGroup()
-                                .addComponent(lblDonorHeader)
-                                .addGap(0, 0, Short.MAX_VALUE))
-                        .addGroup(pnlDonorInputLayout.createSequentialGroup()
-                                .addGroup(pnlDonorInputLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addGroup(pnlDonorInputLayout.createSequentialGroup()
-                                                .addContainerGap()
-                                                .addComponent(pnlDonorGuest, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                                        .addGroup(pnlDonorInputLayout.createSequentialGroup()
-                                                .addGap(2, 2, 2)
-                                                .addGroup(pnlDonorInputLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                        .addComponent(pnlDonorUmpStud, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                                        .addGroup(pnlDonorInputLayout.createSequentialGroup()
-                                                                .addComponent(radDonorUmpStud)
-                                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                                .addComponent(radDonorGuest)
-                                                                .addGap(0, 0, Short.MAX_VALUE)))))
-                                .addContainerGap())
+            pnlDonorInputLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlDonorInputLayout.createSequentialGroup()
+                .addComponent(lblDonorHeader)
+                .addGap(0, 0, Short.MAX_VALUE))
+            .addGroup(pnlDonorInputLayout.createSequentialGroup()
+                .addGroup(pnlDonorInputLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(pnlDonorInputLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(pnlDonorGuest, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(pnlDonorInputLayout.createSequentialGroup()
+                        .addGap(2, 2, 2)
+                        .addGroup(pnlDonorInputLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(pnlDonorUmpStud, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addGroup(pnlDonorInputLayout.createSequentialGroup()
+                                .addComponent(radDonorUmpStud)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(radDonorGuest)
+                                .addGap(0, 0, Short.MAX_VALUE)))))
+                .addContainerGap())
         );
         pnlDonorInputLayout.setVerticalGroup(
-                pnlDonorInputLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(pnlDonorInputLayout.createSequentialGroup()
-                                .addComponent(lblDonorHeader)
-                                .addGap(20, 20, 20)
-                                .addGroup(pnlDonorInputLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                        .addComponent(radDonorUmpStud)
-                                        .addComponent(radDonorGuest))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(pnlDonorUmpStud, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(pnlDonorGuest, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            pnlDonorInputLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlDonorInputLayout.createSequentialGroup()
+                .addComponent(lblDonorHeader)
+                .addGap(20, 20, 20)
+                .addGroup(pnlDonorInputLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(radDonorUmpStud)
+                    .addComponent(radDonorGuest))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(pnlDonorUmpStud, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(pnlDonorGuest, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         lblCampaignHeader.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         lblCampaignHeader.setText("Campaign Information");
 
         lblCampaignName.setText("Campaign Name : ");
+
+        txtCampaignName.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtCampaignNameActionPerformed(evt);
+            }
+        });
 
         lblCampaignStartDate.setText("Campaign Start Date  : ");
 
@@ -529,47 +548,47 @@ public class GUIOrg extends javax.swing.JFrame {
         javax.swing.GroupLayout pnlCampaignInputLayout = new javax.swing.GroupLayout(pnlCampaignInput);
         pnlCampaignInput.setLayout(pnlCampaignInputLayout);
         pnlCampaignInputLayout.setHorizontalGroup(
-                pnlCampaignInputLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(pnlCampaignInputLayout.createSequentialGroup()
-                                .addContainerGap()
+            pnlCampaignInputLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlCampaignInputLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(pnlCampaignInputLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(pnlCampaignInputLayout.createSequentialGroup()
+                        .addGroup(pnlCampaignInputLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lblCampaignName)
+                            .addComponent(lblCampaignStartDate)
+                            .addComponent(lblCampaignVenue))
+                        .addGroup(pnlCampaignInputLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(pnlCampaignInputLayout.createSequentialGroup()
+                                .addGap(56, 56, 56)
+                                .addComponent(txtCampaignName, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlCampaignInputLayout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(pnlCampaignInputLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addGroup(pnlCampaignInputLayout.createSequentialGroup()
-                                                .addGroup(pnlCampaignInputLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                        .addComponent(lblCampaignName)
-                                                        .addComponent(lblCampaignStartDate)
-                                                        .addComponent(lblCampaignVenue))
-                                                .addGroup(pnlCampaignInputLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                        .addGroup(pnlCampaignInputLayout.createSequentialGroup()
-                                                                .addGap(56, 56, 56)
-                                                                .addComponent(txtCampaignName, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlCampaignInputLayout.createSequentialGroup()
-                                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                                .addGroup(pnlCampaignInputLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                                        .addComponent(txtOCampaignStartDate, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                                        .addComponent(txtCampainVenue, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                                        .addComponent(btnCampaignSubmitButton, javax.swing.GroupLayout.Alignment.TRAILING)))))
-                                        .addComponent(lblCampaignHeader))
-                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                    .addComponent(txtOCampaignStartDate, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(txtCampainVenue, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(btnCampaignSubmitButton, javax.swing.GroupLayout.Alignment.TRAILING)))))
+                    .addComponent(lblCampaignHeader))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         pnlCampaignInputLayout.setVerticalGroup(
-                pnlCampaignInputLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(pnlCampaignInputLayout.createSequentialGroup()
-                                .addComponent(lblCampaignHeader)
-                                .addGap(40, 40, 40)
-                                .addGroup(pnlCampaignInputLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                        .addComponent(lblCampaignName)
-                                        .addComponent(txtCampaignName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(18, 18, 18)
-                                .addGroup(pnlCampaignInputLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                        .addComponent(txtOCampaignStartDate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(lblCampaignStartDate))
-                                .addGap(22, 22, 22)
-                                .addGroup(pnlCampaignInputLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                        .addComponent(txtCampainVenue, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(lblCampaignVenue))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 32, Short.MAX_VALUE)
-                                .addComponent(btnCampaignSubmitButton)
-                                .addContainerGap())
+            pnlCampaignInputLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlCampaignInputLayout.createSequentialGroup()
+                .addComponent(lblCampaignHeader)
+                .addGap(40, 40, 40)
+                .addGroup(pnlCampaignInputLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblCampaignName)
+                    .addComponent(txtCampaignName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(pnlCampaignInputLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtOCampaignStartDate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblCampaignStartDate))
+                .addGap(22, 22, 22)
+                .addGroup(pnlCampaignInputLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtCampainVenue, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblCampaignVenue))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 32, Short.MAX_VALUE)
+                .addComponent(btnCampaignSubmitButton)
+                .addContainerGap())
         );
 
         lblDonorHeaderOutPut.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
@@ -580,56 +599,56 @@ public class GUIOrg extends javax.swing.JFrame {
         javax.swing.GroupLayout pnlDonorOutputLayout = new javax.swing.GroupLayout(pnlDonorOutput);
         pnlDonorOutput.setLayout(pnlDonorOutputLayout);
         pnlDonorOutputLayout.setHorizontalGroup(
-                pnlDonorOutputLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(pnlDonorOutputLayout.createSequentialGroup()
-                                .addComponent(lblDonorHeaderOutPut)
-                                .addGap(0, 309, Short.MAX_VALUE))
-                        .addComponent(lblDonorResult, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            pnlDonorOutputLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlDonorOutputLayout.createSequentialGroup()
+                .addComponent(lblDonorHeaderOutPut)
+                .addGap(0, 309, Short.MAX_VALUE))
+            .addComponent(lblDonorResult, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         pnlDonorOutputLayout.setVerticalGroup(
-                pnlDonorOutputLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(pnlDonorOutputLayout.createSequentialGroup()
-                                .addComponent(lblDonorHeaderOutPut)
-                                .addGap(18, 18, 18)
-                                .addComponent(lblDonorResult)
-                                .addContainerGap(256, Short.MAX_VALUE))
+            pnlDonorOutputLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlDonorOutputLayout.createSequentialGroup()
+                .addComponent(lblDonorHeaderOutPut)
+                .addGap(18, 18, 18)
+                .addComponent(lblDonorResult)
+                .addContainerGap(256, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
-                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(layout.createSequentialGroup()
-                                .addComponent(pblOrgInput, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(pnlOrgOutput, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(21, 21, 21)
-                                .addComponent(pnlCampaignInput, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(21, 21, 21)
-                                .addComponent(pnlCampaignOutput, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addGroup(layout.createSequentialGroup()
-                                .addComponent(pnlDonorInput, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(pnlDonorOutput, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(0, 581, Short.MAX_VALUE))
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(pblOrgInput, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(pnlOrgOutput, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(21, 21, 21)
+                .addComponent(pnlCampaignInput, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(21, 21, 21)
+                .addComponent(pnlCampaignOutput, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(pnlDonorInput, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(pnlDonorOutput, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 581, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
-                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(layout.createSequentialGroup()
-                                .addContainerGap()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(pblOrgInput, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(pnlOrgOutput, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(pnlCampaignOutput, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(pnlCampaignInput, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(pnlDonorInput, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addGroup(layout.createSequentialGroup()
-                                                .addComponent(pnlDonorOutput, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addGap(0, 0, Short.MAX_VALUE)))
-                                .addContainerGap())
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(pblOrgInput, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(pnlOrgOutput, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(pnlCampaignOutput, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(pnlCampaignInput, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(pnlDonorInput, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(pnlDonorOutput, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addContainerGap())
         );
 
         pack();
@@ -685,8 +704,7 @@ public class GUIOrg extends javax.swing.JFrame {
                 myStat.execute("SELECT * FROM `organization`");
                 myStat.execute("INSERT INTO `organization` (`orgName`, `orgAddress`, `orgPhoneNo`, `orgEmail`) VALUEs('" + txtOrgName.getText() + "','" +
                         txtOrgAddress.getText() + "','" + txtOrgPhoneNo.getText() + "','" + txtOrgEmail.getText() + "');");
-            } catch (Exception e) {
-                e.printStackTrace();
+            } catch (SQLException e) {
             }
 
 
@@ -702,8 +720,7 @@ public class GUIOrg extends javax.swing.JFrame {
                 myStat.execute("SELECT * FROM `organization`");
                 myStat.execute("UPDATE organization SET orgName = '" + txtOrgName.getText() + "' , orgAddress = '" + txtOrgAddress.getText() + "' , orgPhoneNo = '" + txtOrgPhoneNo.getText() + "' , orgEmail = '" + txtOrgEmail.getText() + "' WHERE id = '1'");
                 //myStat.execute("UPDATE `organization` SET `orgName` = "+txtOrgName.getText()+", `orgAddress` = "+ txtOrgAddress.getText()+", `orgPhoneNo` = "+ txtOrgPhoneNo.getText()+", `orgEmail` = "+ txtOrgEmail.getText()+" WHERE id = '1';");
-            } catch (Exception e) {
-                e.printStackTrace();
+            } catch (SQLException e) {
             }
             organization.updateDetails(txtOrgName.getText(), txtOrgAddress.getText(), txtOrgPhoneNo.getText(), txtOrgEmail.getText());
 
@@ -737,7 +754,7 @@ public class GUIOrg extends javax.swing.JFrame {
             organization.setCampaign(campaign[i]);
 //            String campaignDetailString = (countCampaign + 1) + ")" + " " + campaign[i].getCampaignName() + "   |   " + campaign[i].getCampaignStartDate() + "   |   " +
 //                    campaign[i].getCampaignVenue() + "   |   " + organization.getOrgnizationName() + "<BR>";
-//            campaignDetail += campaignDetailString
+//            campaignDetail += campaignDetailString;
             try {
                 myConn = DriverManager.getConnection("jdbc:mysql://localhost:3306/phase3", "root", "");
                 myStat = myConn.createStatement();
@@ -753,13 +770,23 @@ public class GUIOrg extends javax.swing.JFrame {
                             myRs.getString("campaignVenue") + "   |   " + myRs.getString("orgName") + "<BR>";
 
                 }
+                
+                
+                jLabel1.setText(campaign[i].getCampaignName());
+                jLabel2.setText(campaign[i].getCampaignStartDate());
+                jLabel3.setText(campaign[i].getCampaignVenue());
                 campaignDetail += campaignDetailString;
             } catch (Exception e) {
                 e.printStackTrace();
             }
 
         }
-        lblCampaignArrayDetails.setText("<html>" + campaignDetail + "</html>");
+        
+         //txtCampaignName.setText(campaign[i].getCampaignName());
+            txtOCampaignStartDate.setEditable(false);
+            txtCampainVenue.setEditable(false);
+        
+        //lblCampaignArrayDetails.setText("<html>" + campaignDetail + "</html>");
 
         countCampaign++;
     }//GEN-LAST:event_btnCampaignSubmitButtonActionPerformed
@@ -796,8 +823,7 @@ public class GUIOrg extends javax.swing.JFrame {
                 myStat.execute("UPDATE campaign SET campaignTotalDonatedBlood = '" + campaign[(Integer.parseInt(txtDonorUmpStudCampaignNo.getText())) - 1].getCampaignTotalDonatedBlood() + "' WHERE id = '" + txtDonorUmpStudCampaignNo.getText() + "'");
 
 
-            } catch (Exception e) {
-                e.printStackTrace();
+            } catch (NumberFormatException | SQLException e) {
             }
 
         }
@@ -856,8 +882,7 @@ public class GUIOrg extends javax.swing.JFrame {
                 myStat.execute("UPDATE campaign SET campaignTotalDonatedBlood = '" + campaign[(Integer.parseInt(txtDonorGuestCampaignNo.getText())) - 1].getCampaignTotalDonatedBlood() + "' WHERE id = '" + txtDonorGuestCampaignNo.getText() + "'");
 
 
-            } catch (Exception e) {
-                e.printStackTrace();
+            } catch (NumberFormatException | SQLException e) {
             }
 
         }
@@ -866,6 +891,10 @@ public class GUIOrg extends javax.swing.JFrame {
         lblDonorResult.setText("<html><body><table border='1'><tr><th>#</th><th>Org Name</th><th>Campaign Name</th><th>Campaign Total Donated blood</th><th>Donor Name</th><th>Donor Donate Amount</th><th>Donor Comment</th></tr>" + donorFullresult + "</table></body></html>");
         countDonor++;
     }//GEN-LAST:event_btnDonorGuestSubmitButtonActionPerformed
+
+    private void txtCampaignNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCampaignNameActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtCampaignNameActionPerformed
 
     /**
      * @param args the command line arguments
@@ -916,8 +945,7 @@ public class GUIOrg extends javax.swing.JFrame {
             myStat.execute("CREATE TABLE IF NOT EXISTS `phase3`.`organization` ( `id` INT NOT NULL AUTO_INCREMENT , `orgName` TEXT NOT NULL , `orgAddress` TEXT NOT NULL , `orgPhoneNo` TEXT NOT NULL , `orgEmail` TEXT NOT NULL  , PRIMARY KEY (`id`)) ENGINE = InnoDB;");
             System.out.println("Connected");
 
-        } catch (Exception e) {
-            e.printStackTrace();
+        } catch (SQLException e) {
         }
 
     }
@@ -931,7 +959,9 @@ public class GUIOrg extends javax.swing.JFrame {
     private javax.swing.JCheckBox checkBoxUOrgUpdate;
     private javax.swing.JComboBox<String> cmbDonorGuestGender;
     private javax.swing.JComboBox<String> cmbDonorUmpStudGender;
-    private javax.swing.JLabel lblCampaignArrayDetails;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel lblCampaignHeader;
     private javax.swing.JLabel lblCampaignHeaderOutPut;
     private javax.swing.JLabel lblCampaignName;
