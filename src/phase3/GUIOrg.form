@@ -735,7 +735,7 @@
                               <Component id="lblCampaignName" alignment="0" min="-2" max="-2" attributes="0"/>
                               <Component id="lblCampaignStartDate" alignment="0" min="-2" max="-2" attributes="0"/>
                               <Component id="lblCampaignVenue" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Component id="checkBoxUOrgUpdate2" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="checkBoxUOrgUpdate1" alignment="0" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Group type="102" alignment="0" attributes="0">
@@ -780,7 +780,7 @@
                   <EmptySpace pref="32" max="32767" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="btnCampaignSubmitButton" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="checkBoxUOrgUpdate2" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="checkBoxUOrgUpdate1" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
               </Group>
@@ -828,12 +828,12 @@
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnCampaignSubmitButtonActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JCheckBox" name="checkBoxUOrgUpdate2">
+        <Component class="javax.swing.JCheckBox" name="checkBoxUOrgUpdate1">
           <Properties>
             <Property name="text" type="java.lang.String" value="Update?"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="checkBoxUOrgUpdate2ActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="checkBoxUOrgUpdate1ActionPerformed"/>
           </Events>
         </Component>
       </SubComponents>
