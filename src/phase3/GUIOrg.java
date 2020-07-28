@@ -5,19 +5,20 @@
  */
 package phase3;
 
-import java.awt.Color;
-import java.awt.event.ItemListener;
+
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.sql.Statement;
 import java.text.SimpleDateFormat;
 import java.util.Locale;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 
 
 /**
@@ -94,7 +95,9 @@ public class GUIOrg extends javax.swing.JFrame {
         lblOrgIDOut = new javax.swing.JLabel();
         pnlCampaignOutput = new javax.swing.JPanel();
         lblCampaignHeaderOutPut = new javax.swing.JLabel();
-        lblCampaignArrayDetails = new javax.swing.JLabel();
+        cNameOutput = new javax.swing.JLabel();
+        cDate = new javax.swing.JLabel();
+        cVenue = new javax.swing.JLabel();
         pnlDonorInput = new javax.swing.JPanel();
         lblDonorHeader = new javax.swing.JLabel();
         radDonorUmpStud = new javax.swing.JRadioButton();
@@ -138,9 +141,11 @@ public class GUIOrg extends javax.swing.JFrame {
         txtCampainVenue = new javax.swing.JTextField();
         btnCampaignSubmitButton = new javax.swing.JButton();
         jDateChooser1 = new com.toedter.calendar.JDateChooser();
+        cmpUpdate = new javax.swing.JCheckBox();
         pnlDonorOutput = new javax.swing.JPanel();
         lblDonorHeaderOutPut = new javax.swing.JLabel();
-        lblDonorResult = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        donorTable = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(255, 255, 255));
@@ -281,7 +286,11 @@ public class GUIOrg extends javax.swing.JFrame {
         lblCampaignHeaderOutPut.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         lblCampaignHeaderOutPut.setText("Output");
 
-        lblCampaignArrayDetails.setText("CampaignArrayDetails");
+        cNameOutput.setText("Campaign name:");
+
+        cDate.setText("Start Date");
+
+        cVenue.setText("Venue");
 
         javax.swing.GroupLayout pnlCampaignOutputLayout = new javax.swing.GroupLayout(pnlCampaignOutput);
         pnlCampaignOutput.setLayout(pnlCampaignOutputLayout);
@@ -290,16 +299,22 @@ public class GUIOrg extends javax.swing.JFrame {
             .addGroup(pnlCampaignOutputLayout.createSequentialGroup()
                 .addGroup(pnlCampaignOutputLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(lblCampaignHeaderOutPut)
-                    .addComponent(lblCampaignArrayDetails, javax.swing.GroupLayout.PREFERRED_SIZE, 340, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(0, 28, Short.MAX_VALUE))
+                    .addComponent(cNameOutput)
+                    .addComponent(cDate)
+                    .addComponent(cVenue))
+                .addGap(0, 309, Short.MAX_VALUE))
         );
         pnlCampaignOutputLayout.setVerticalGroup(
             pnlCampaignOutputLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnlCampaignOutputLayout.createSequentialGroup()
                 .addComponent(lblCampaignHeaderOutPut)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(lblCampaignArrayDetails)
-                .addContainerGap(154, Short.MAX_VALUE))
+                .addGap(46, 46, 46)
+                .addComponent(cNameOutput)
+                .addGap(18, 18, 18)
+                .addComponent(cDate)
+                .addGap(29, 29, 29)
+                .addComponent(cVenue)
+                .addContainerGap(42, Short.MAX_VALUE))
         );
 
         lblDonorHeader.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
@@ -328,6 +343,12 @@ public class GUIOrg extends javax.swing.JFrame {
         cmbDonorUmpStudGender.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Male", "Female" }));
 
         lblDonorUmpStudName.setText("Donor Name :");
+
+        txtDonorUmpStudName.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtDonorUmpStudNameActionPerformed(evt);
+            }
+        });
 
         btnDonorUmpStudSubmitButton.setText("Submit");
         btnDonorUmpStudSubmitButton.addActionListener(new java.awt.event.ActionListener() {
@@ -542,6 +563,13 @@ public class GUIOrg extends javax.swing.JFrame {
             }
         });
 
+        cmpUpdate.setText("Update?");
+        cmpUpdate.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cmpUpdateActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout pnlCampaignInputLayout = new javax.swing.GroupLayout(pnlCampaignInput);
         pnlCampaignInput.setLayout(pnlCampaignInputLayout);
         pnlCampaignInputLayout.setHorizontalGroup(
@@ -553,18 +581,19 @@ public class GUIOrg extends javax.swing.JFrame {
                         .addGroup(pnlCampaignInputLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(lblCampaignName)
                             .addComponent(lblCampaignStartDate)
-                            .addComponent(lblCampaignVenue))
+                            .addComponent(lblCampaignVenue)
+                            .addComponent(cmpUpdate))
                         .addGroup(pnlCampaignInputLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(pnlCampaignInputLayout.createSequentialGroup()
+                                .addGap(56, 56, 56)
+                                .addComponent(txtCampaignName, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlCampaignInputLayout.createSequentialGroup()
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(pnlCampaignInputLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(txtCampainVenue, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(btnCampaignSubmitButton, javax.swing.GroupLayout.Alignment.TRAILING)))
-                            .addGroup(pnlCampaignInputLayout.createSequentialGroup()
-                                .addGap(56, 56, 56)
-                                .addGroup(pnlCampaignInputLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(txtCampaignName, javax.swing.GroupLayout.DEFAULT_SIZE, 240, Short.MAX_VALUE)
-                                    .addComponent(jDateChooser1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))))
+                                    .addComponent(jDateChooser1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGroup(pnlCampaignInputLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(txtCampainVenue, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(btnCampaignSubmitButton, javax.swing.GroupLayout.Alignment.TRAILING))))))
                     .addComponent(lblCampaignHeader))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -576,40 +605,51 @@ public class GUIOrg extends javax.swing.JFrame {
                 .addGroup(pnlCampaignInputLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblCampaignName)
                     .addComponent(txtCampaignName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(pnlCampaignInputLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addGap(20, 20, 20)
+                .addGroup(pnlCampaignInputLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(lblCampaignStartDate)
                     .addComponent(jDateChooser1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(25, 25, 25)
+                .addGap(19, 19, 19)
                 .addGroup(pnlCampaignInputLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtCampainVenue, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblCampaignVenue))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 32, Short.MAX_VALUE)
-                .addComponent(btnCampaignSubmitButton)
+                .addGroup(pnlCampaignInputLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnCampaignSubmitButton)
+                    .addComponent(cmpUpdate))
                 .addContainerGap())
         );
 
         lblDonorHeaderOutPut.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         lblDonorHeaderOutPut.setText("Output");
 
-        lblDonorResult.setText("donorFullResult");
+        donorTable.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null}
+            },
+            new String [] {
+                "Student ID", "Donor name", "Gender", "Age", "Total Blood", "Donated Blood", "Campaign name", "Comment"
+            }
+        ));
+        jScrollPane1.setViewportView(donorTable);
 
         javax.swing.GroupLayout pnlDonorOutputLayout = new javax.swing.GroupLayout(pnlDonorOutput);
         pnlDonorOutput.setLayout(pnlDonorOutputLayout);
         pnlDonorOutputLayout.setHorizontalGroup(
             pnlDonorOutputLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pnlDonorOutputLayout.createSequentialGroup()
-                .addComponent(lblDonorHeaderOutPut)
-                .addGap(0, 309, Short.MAX_VALUE))
-            .addComponent(lblDonorResult, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(lblDonorHeaderOutPut)
+            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 369, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         pnlDonorOutputLayout.setVerticalGroup(
             pnlDonorOutputLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnlDonorOutputLayout.createSequentialGroup()
                 .addComponent(lblDonorHeaderOutPut)
-                .addGap(18, 18, 18)
-                .addComponent(lblDonorResult)
-                .addContainerGap(256, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 239, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(44, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -629,7 +669,7 @@ public class GUIOrg extends javax.swing.JFrame {
                 .addComponent(pnlDonorInput, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(pnlDonorOutput, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 581, Short.MAX_VALUE))
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -716,7 +756,8 @@ public class GUIOrg extends javax.swing.JFrame {
                 myStat.execute("SELECT * FROM `organization`");
                 int Oid=0;
                 myStat.execute("INSERT INTO `organization` (`orgName`, `orgAddress`, `orgPhoneNo`, `orgEmail`) VALUEs('" + txtOrgName.getText() + "','" +
-                        txtOrgAddress.getText() + "','" + txtOrgPhoneNo.getText() + "','" + txtOrgEmail.getText() + "');",Statement.RETURN_GENERATED_KEYS);
+
+                   txtOrgAddress.getText() + "','" + txtOrgPhoneNo.getText() + "','" + txtOrgEmail.getText() + "');",Statement.RETURN_GENERATED_KEYS);
                 txtOrgName.setEditable(false);
                 txtOrgAddress.setEditable(false);
                 txtOrgPhoneNo.setEditable(false);
@@ -727,8 +768,10 @@ public class GUIOrg extends javax.swing.JFrame {
 				Oid=rs.getInt(1);
                                 lblOrgIDOut.setText(String.valueOf(Oid));
 			}
-            } catch (Exception e) {
-                e.printStackTrace();
+
+                        
+
+            } catch (SQLException e) {
             }
             }else if (!statusE){
                       JFrame parent = new JFrame();
@@ -797,8 +840,18 @@ public class GUIOrg extends javax.swing.JFrame {
                 lblOrgEmailOut.setText("Please enter a value!");
             }
                
-            } catch (Exception e) {
-                e.printStackTrace();
+            } catch (SQLException e) {
+                try {
+                    myStat.execute("SELECT * FROM `organization`");
+                } catch (SQLException ex) {
+                    Logger.getLogger(GUIOrg.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                try {
+                    myStat.execute("UPDATE organization SET orgName = '" + txtOrgName.getText() + "' , orgAddress = '" + txtOrgAddress.getText() + "' , orgPhoneNo = '" + txtOrgPhoneNo.getText() + "' , orgEmail = '" + txtOrgEmail.getText() + "' WHERE id = '1'");
+                    //myStat.execute("UPDATE `organization` SET `orgName` = "+txtOrgName.getText()+", `orgAddress` = "+ txtOrgAddress.getText()+", `orgPhoneNo` = "+ txtOrgPhoneNo.getText()+", `orgEmail` = "+ txtOrgEmail.getText()+" WHERE id = '1';");
+                } catch (SQLException ex) {
+                    Logger.getLogger(GUIOrg.class.getName()).log(Level.SEVERE, null, ex);
+                }
             }
             organization.updateDetails(txtOrgName.getText(), txtOrgAddress.getText(), txtOrgPhoneNo.getText(), txtOrgEmail.getText());
 
@@ -834,7 +887,7 @@ public class GUIOrg extends javax.swing.JFrame {
             organization.setCampaign(campaign[i]);
 //            String campaignDetailString = (countCampaign + 1) + ")" + " " + campaign[i].getCampaignName() + "   |   " + campaign[i].getCampaignStartDate() + "   |   " +
 //                    campaign[i].getCampaignVenue() + "   |   " + organization.getOrgnizationName() + "<BR>";
-//            campaignDetail += campaignDetailString
+//            campaignDetail += campaignDetailString;
             try {
                 myConn = DriverManager.getConnection("jdbc:mysql://localhost:3306/phase3", "root", "");
                 myStat = myConn.createStatement();
@@ -846,17 +899,23 @@ public class GUIOrg extends javax.swing.JFrame {
                 myRs = myStat.executeQuery("SELECT * FROM campaign");
                 String campaignDetailString = "";
                 while (myRs.next()) {
-                    campaignDetailString = myRs.getString("id") + ")" + " " + myRs.getString("campaignName") + "   |   " + myRs.getString("campaignStartDate") + "   |   " +
-                            myRs.getString("campaignVenue") + "   |   " + myRs.getString("orgName") + "<BR>";
+                    campaignDetailString = myRs.getString("id") + ")" + " " + myRs.getString("campaignName") + "\n" + myRs.getString("campaignStartDate") + "\n" +
+                            myRs.getString("campaignVenue") + "\n" + myRs.getString("orgName") + "<BR>";
 
                 }
                 campaignDetail += campaignDetailString;
-            } catch (Exception e) {
-                e.printStackTrace();
+                cNameOutput.setText(campaign[i].getCampaignName());
+                cDate.setText(startDate);
+                cVenue.setText(campaign[i].getCampaignVenue());
+                
+            } catch (SQLException e) {
             }
 
         }
-        lblCampaignArrayDetails.setText("<html>" + campaignDetail + "</html>");
+        
+        
+        
+       // lblCampaignArrayDetails.setText("<html>" + campaignDetail + "</html>");
 
         countCampaign++;
     }//GEN-LAST:event_btnCampaignSubmitButtonActionPerformed
@@ -884,24 +943,53 @@ public class GUIOrg extends javax.swing.JFrame {
             donorDetail += donorDetailString;
             try {
                 myConn = DriverManager.getConnection("jdbc:mysql://localhost:3306/phase3", "root", "");
-                myStat = myConn.createStatement();
-                myStat.execute("CREATE TABLE IF NOT EXISTS `phase3`.`donorUmpStud` ( `id` INT NOT NULL AUTO_INCREMENT , `studentID` TEXT NOT NULL , `donorName` TEXT NOT NULL , `donorGender` TEXT NOT NULL , `donorAge` INT NOT NULL , `donorTotalBlood` DOUBLE NOT NULL, `donorTotalDonatedBlood` DOUBLE NOT NULL ,`campaignName` TEXT NOT NULL ,`donorComment` TEXT NOT NULL , PRIMARY KEY (`id`)) ENGINE = InnoDB;");
-                myStat.execute("SELECT * FROM `donorUmpStud`");
-                myStat.execute("INSERT INTO `donorUmpStud` (`studentID`, `donorName`, `donorGender`, `donorAge`, `donorTotalBlood`, `donorTotalDonatedBlood`, `campaignName` ,`donorComment`) VALUES('" + txtDonorUmpStudID.getText() + "','" +
-                        donor[i].getDonorName() + "','" + donor[i].getDonorGender() + "','" + donor[i].getDonorAge() + "','" + donor[i].getDonorTotalBlood() + "','" + donor[i].getDonorDonatedAmount() + "','" + campaign[(Integer.parseInt(txtDonorUmpStudCampaignNo.getText())) - 1].getCampaignName() + "','" + donor[i].printMessage() + "');");
-                myStat.execute("SELECT * FROM `campaign`");
-                myStat.execute("UPDATE campaign SET campaignTotalDonatedBlood = '" + campaign[(Integer.parseInt(txtDonorUmpStudCampaignNo.getText())) - 1].getCampaignTotalDonatedBlood() + "' WHERE id = '" + txtDonorUmpStudCampaignNo.getText() + "'");
+                
+                String sql = " INSERT INTO donorUmpStud(studentID, donorName, donorGender, donorAge, donorTotalBlood, donorTotalDonatedBlood, campaignName, donorComment) values (?, ?, ?, ?, ?, ?, ?, ?)";
+                PreparedStatement ps= myConn.prepareStatement(sql);
+                ps.setString(1, txtDonorUmpStudID.getText());
+                ps.setString(2, donor[i].getDonorName());
+                ps.setString(3, donor[i].getDonorGender());
+                ps.setInt(4, donor[i].getDonorAge());
+                ps.setInt(4, donor[i].getDonorAge());
+                ps.setDouble(5, donor[i].getDonorTotalBlood());
+                ps.setDouble(6, donor[i].getDonorDonatedAmount());
+                 ps.setString(7, campaign[(Integer.parseInt(txtDonorUmpStudCampaignNo.getText())) - 1].getCampaignName());
+                  ps.setString(8, donor[i].printMessage());
+                  ps.execute();
+   
+//                myStat = myConn.createStatement();
+//                myStat.execute("CREATE TABLE IF NOT EXISTS `phase3`.`donorUmpStud` ( `id` INT NOT NULL AUTO_INCREMENT , `studentID` TEXT NOT NULL , `donorName` TEXT NOT NULL , `donorGender` TEXT NOT NULL , `donorAge` INT NOT NULL , `donorTotalBlood` DOUBLE NOT NULL, `donorTotalDonatedBlood` DOUBLE NOT NULL ,`campaignName` TEXT NOT NULL ,`donorComment` TEXT NOT NULL , PRIMARY KEY (`id`)) ENGINE = InnoDB;");
+//                myStat.execute("SELECT * FROM `donorUmpStud`");
+//                myStat.execute("INSERT INTO `donorUmpStud` (`studentID`, `donorName`, `donorGender`, `donorAge`, `donorTotalBlood`, `donorTotalDonatedBlood`, `campaignName` ,`donorComment`) VALUES('" + txtDonorUmpStudID.getText() + "','" +
+//                        donor[i].getDonorName() + "','" + donor[i].getDonorGender() + "','" + donor[i].getDonorAge() + "','" + donor[i].getDonorTotalBlood() + "','" + donor[i].getDonorDonatedAmount() + "','" + campaign[(Integer.parseInt(txtDonorUmpStudCampaignNo.getText())) - 1].getCampaignName() + "','" + donor[i].printMessage() + "');");
+//                myStat.execute("SELECT * FROM `campaign`");
+//                myStat.execute("UPDATE campaign SET campaignTotalDonatedBlood = '" + campaign[(Integer.parseInt(txtDonorUmpStudCampaignNo.getText())) - 1].getCampaignTotalDonatedBlood() + "' WHERE id = '" + txtDonorUmpStudCampaignNo.getText() + "'");
 
 
-            } catch (Exception e) {
-                e.printStackTrace();
+            } catch (NumberFormatException | SQLException e) {
             }
-
+            
         }
-
+         try
+        {
+            myConn = DriverManager.getConnection("jdbc:mysql://localhost:3306/phase3", "root", "");
+            PreparedStatement ps= myConn.prepareStatement(" SELECT * FROM donorUmpStud ");
+            ResultSet rs = ps.executeQuery();
+            DefaultTableModel tm=(DefaultTableModel)donorTable.getModel();
+            tm.setRowCount(0);
+            while(rs.next()){
+            
+                Object o[] = {rs.getString("studentID"), rs.getString("donorName"), rs.getString("donorGender"), rs.getInt("donorAge"), rs.getInt("donorTotalBlood"), rs.getInt("donorTotalDonatedBlood"), rs.getString("campaignName"), rs.getString("donorComment")};
+                tm.addRow(o);    
+            }
+        }
+        catch(SQLException e){
+            JOptionPane.showMessageDialog(this, e);
+        
+        }    
 
         donorFullresult = printFinalResult(countDonor, donorFullresult, donor, campaign, organization, Integer.parseInt(txtDonorUmpStudCampaignNo.getText()));
-        lblDonorResult.setText("<html><body><table border='1'><tr><th>#</th><th>Org Name</th><th>Campaign Name</th><th>Campaign Total Donated blood</th><th>Donor Name</th><th>Donor Donate Amount</th><th>Donor Comment</th></tr>" + donorFullresult + "</table></body></html>");
+//        lblDonorResult.setText("<html><body><table border='1'><tr><th>#</th><th>Org Name</th><th>Campaign Name</th><th>Campaign Total Donated blood</th><th>Donor Name</th><th>Donor Donate Amount</th><th>Donor Comment</th></tr>" + donorFullresult + "</table></body></html>");
         countDonor++;
     }//GEN-LAST:event_btnDonorUmpStudSubmitButtonActionPerformed
 
@@ -933,7 +1021,7 @@ public class GUIOrg extends javax.swing.JFrame {
         }
 
         for (int i = countDonor; i == countDonor; i++) {
-            donor[i] = donorFactory.createDonor(donorFactoryType, "null", txtDonorGuestName.getText(), gender, Integer.parseInt(txtDoorGuestAge.getText()), Double.parseDouble(txtDonorGuestTotalBlood.getText()));
+            donor[i] = donorFactory.createDonor(donorFactoryType, "none", txtDonorGuestName.getText(), gender, Integer.parseInt(txtDoorGuestAge.getText()), Double.parseDouble(txtDonorGuestTotalBlood.getText()));
             //donor[i] = new DonorGuest(txtDonorGuestName.getText(), gender, Integer.parseInt(txtDoorGuestAge.getText()), Double.parseDouble(txtDonorGuestTotalBlood.getText()));
             campaign[(Integer.parseInt(txtDonorGuestCampaignNo.getText())) - 1].setDonor(donor[i]);
             donor[i].donateBlood(Double.parseDouble(txtDonorGuestDonateAmount.getText()), campaign[(Integer.parseInt(txtDonorGuestCampaignNo.getText())) - 1]);
@@ -953,16 +1041,33 @@ public class GUIOrg extends javax.swing.JFrame {
                 myStat.execute("UPDATE campaign SET campaignTotalDonatedBlood = '" + campaign[(Integer.parseInt(txtDonorGuestCampaignNo.getText())) - 1].getCampaignTotalDonatedBlood() + "' WHERE id = '" + txtDonorGuestCampaignNo.getText() + "'");
 
 
-            } catch (Exception e) {
-                e.printStackTrace();
+            } catch (NumberFormatException | SQLException e) {
             }
 
         }
 
         donorFullresult = printFinalResult(countDonor, donorFullresult, donor, campaign, organization, Integer.parseInt(txtDonorGuestCampaignNo.getText()));
-        lblDonorResult.setText("<html><body><table border='1'><tr><th>#</th><th>Org Name</th><th>Campaign Name</th><th>Campaign Total Donated blood</th><th>Donor Name</th><th>Donor Donate Amount</th><th>Donor Comment</th></tr>" + donorFullresult + "</table></body></html>");
+//        lblDonorResult.setText("<html><body><table border='1'><tr><th>#</th><th>Org Name</th><th>Campaign Name</th><th>Campaign Total Donated blood</th><th>Donor Name</th><th>Donor Donate Amount</th><th>Donor Comment</th></tr>" + donorFullresult + "</table></body></html>");
         countDonor++;
     }//GEN-LAST:event_btnDonorGuestSubmitButtonActionPerformed
+
+    private void txtDonorUmpStudNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtDonorUmpStudNameActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtDonorUmpStudNameActionPerformed
+
+    private void cmpUpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmpUpdateActionPerformed
+       if (cmpUpdate.isSelected()) {
+            txtCampaignName.setEditable(true);
+            jDateChooser1.setEnabled(true);
+            txtCampainVenue.setEditable(true);
+    
+        } else {
+             txtCampaignName.setEditable(false);
+            jDateChooser1.setEnabled(false);
+            txtCampainVenue.setEditable(false);
+        }
+
+    }//GEN-LAST:event_cmpUpdateActionPerformed
 
     /**
      * @param args the command line arguments
@@ -996,11 +1101,8 @@ public class GUIOrg extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new GUIOrg().setVisible(true);
-
-            }
+        java.awt.EventQueue.invokeLater(() -> {
+            new GUIOrg().setVisible(true);
         });
 
 
@@ -1013,8 +1115,7 @@ public class GUIOrg extends javax.swing.JFrame {
             myStat.execute("CREATE TABLE IF NOT EXISTS `phase3`.`organization` ( `id` INT NOT NULL AUTO_INCREMENT , `orgName` TEXT NOT NULL , `orgAddress` TEXT NOT NULL , `orgPhoneNo` TEXT NOT NULL , `orgEmail` TEXT NOT NULL  , PRIMARY KEY (`id`)) ENGINE = InnoDB;");
             System.out.println("Connected");
 
-        } catch (Exception e) {
-            e.printStackTrace();
+        } catch (SQLException e) {
         }
 
     }
@@ -1025,11 +1126,16 @@ public class GUIOrg extends javax.swing.JFrame {
     private javax.swing.JButton btnDonorGuestSubmitButton;
     private javax.swing.JButton btnDonorUmpStudSubmitButton;
     private javax.swing.JButton btnOrgSubmitButton;
+    private javax.swing.JLabel cDate;
+    private javax.swing.JLabel cNameOutput;
+    private javax.swing.JLabel cVenue;
     private javax.swing.JCheckBox checkBoxUOrgUpdate;
     private javax.swing.JComboBox<String> cmbDonorGuestGender;
     private javax.swing.JComboBox<String> cmbDonorUmpStudGender;
+    private javax.swing.JCheckBox cmpUpdate;
+    private javax.swing.JTable donorTable;
     private com.toedter.calendar.JDateChooser jDateChooser1;
-    private javax.swing.JLabel lblCampaignArrayDetails;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lblCampaignHeader;
     private javax.swing.JLabel lblCampaignHeaderOutPut;
     private javax.swing.JLabel lblCampaignName;
@@ -1042,7 +1148,6 @@ public class GUIOrg extends javax.swing.JFrame {
     javax.swing.JLabel lblDonorGuestTotalBlood;
     private javax.swing.JLabel lblDonorHeader;
     private javax.swing.JLabel lblDonorHeaderOutPut;
-    private javax.swing.JLabel lblDonorResult;
     private javax.swing.JLabel lblDonorStudentID;
     private javax.swing.JLabel lblDonorUmpStudAge;
     javax.swing.JLabel lblDonorUmpStudCampaignNo;
